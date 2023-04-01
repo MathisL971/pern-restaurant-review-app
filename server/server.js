@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const { Pool } = require("pg");
 const db = require("./db");
+const cors = require("cors");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.listen(port, () => {
 });
 
 // Middleware //
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
