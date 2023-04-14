@@ -23,9 +23,7 @@ const RestaurantsList = (props) => {
   const handleDelete = async (e, id) => {
     e.stopPropagation();
     try {
-      console.log("In try...");
       const response = await RestaurantFinder.delete(`/${id}`);
-      console.log(response);
       setRestaurants(
         restaurants.filter((restaurant) => {
           return restaurant.id !== id;
@@ -50,7 +48,7 @@ const RestaurantsList = (props) => {
     }
     return (
       <>
-        <StarRating rating={restaurant.id}></StarRating>
+        <StarRating rating={restaurant.average_rating}></StarRating>
         <span className="text-warning ml-1">({restaurant.count})</span>
       </>
     );

@@ -11,5 +11,5 @@ CREATE TABLE reviews(
     body TEXT NOT NULL,
     rating INT NOT NULL CHECK(rating >= 1 and rating <= 5),
     restaurant_id INT NOT NULL,
-    FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(id) ON DELETE CASCADE
 );

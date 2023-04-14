@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { RestaurantsContext } from "../context/RestaurantsContext";
 import RestaurantFinder from "../apis/RestaurantFinder";
 import { useContext } from "react";
@@ -9,6 +9,7 @@ import AddReview from "../components/AddReview";
 
 const RestaurantDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { selectedRestaurant, setSelectedRestaurant } =
     useContext(RestaurantsContext);
@@ -24,11 +25,12 @@ const RestaurantDetailPage = () => {
     };
     fetchData();
   }, [id, setSelectedRestaurant]);
-
+  
   return (
-    <div>
+    <div className="mt-5">
       {selectedRestaurant && (
         <>
+          <i class="fa-solid fa-arrow-left fa-2xl" onClick={() => navigate(-1)}></i>
           <h1 className="text-center display-1">
             {selectedRestaurant.restaurant.name}
           </h1>
